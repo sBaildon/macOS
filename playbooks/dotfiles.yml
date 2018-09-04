@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: "dotfiles"
+    block:
+    - name: "Clone dotfiles"
+      git:
+        repo: https://github.com/sbaildon/dotfiles.git
+        dest: "{{ ansible_env.HOME }}/Projects/dotfiles"
+    - name: "Set fish shell"
+      user:
+        name: sbaildon
+        shell: /usr/local/bin/fish

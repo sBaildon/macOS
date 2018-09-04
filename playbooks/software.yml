@@ -1,0 +1,118 @@
+---
+- hosts: localhost
+  tasks:
+
+    - name: "Install neovim"
+      homebrew:
+        name: neovim
+        state: present
+
+    - name: "Install vim"
+      homebrew:
+        name: vim
+        state: present
+
+    - name: "Install curl"
+      homebrew:
+        name: curl
+        state: present
+
+    - name: "Install golang"
+      homebrew:
+        name: go
+        state: present
+
+    - name: "Install jq"
+      homebrew:
+        name: jq
+        state: present
+
+    - name: "Install yarn"
+      homebrew:
+        name: yarn
+        state: present
+
+    - name: "Install node"
+      homebrew:
+        name: node
+        state: present
+
+    - name: "Install hinstall ttpie"
+      homebrew:
+        name: httpie
+        state: present
+
+    - name: "Install git"
+      homebrew:
+        name: git
+        state: present
+
+    - name: "Install fish"
+      homebrew:
+        name: fish
+        state: present
+
+    - name: "Install ripgrep"
+      homebrew:
+        name: ripgrep
+        state: present
+
+    - name: "Install fd"
+      homebrew:
+        name: fd
+        state: present
+
+    - name: "Install tmux"
+      homebrew:
+        name: tmux
+        state: present
+
+    - name: "Install tree"
+      homebrew:
+        name: rtree
+        state: present
+
+    - name: "Install dep"
+      homebrew:
+        name: dep
+        state: present
+
+    - name: "Install n"
+      homebrew:
+        name: n
+        state: present
+
+    - name: "Install entr"
+      homebrew:
+        name: entr
+        state: present
+
+    - name: "Install kubernetes-cli"
+      homebrew:
+        name: kubernetes-cli
+        state: present
+
+    - name: "Install bat"
+      homebrew:
+        name: bat
+        state: present
+
+    - name: "Install fzf"
+      homebrew:
+        name: fzf
+        state: present
+
+    - name: "Install python"
+      homebrew:
+        name: python
+        state: present
+
+    - name: "Install python@2"
+      homebrew:
+        name: python@2
+        state: present
+
+    - name: "Install make"
+      homebrew:
+        name: make
+        state: present
