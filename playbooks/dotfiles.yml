@@ -4,11 +4,23 @@
 
   - name: "dotfiles"
     block:
+
     - name: "Clone dotfiles"
       git:
         repo: https://github.com/sbaildon/dotfiles.git
         dest: "{{ ansible_env.HOME }}/Projects/dotfiles"
-    - name: "Set fish shell"
-      user:
-        name: sbaildon
-        shell: /usr/local/bin/fish
+        recursive: yes
+        accept_hostkey: yes
+
+    - name: "Stow dotfiles"
+      command: "stow -t {{ ansible_env.HOME}}/ {{ item }}"
+      args:
+        chdir: "{{ ansible_env.HOME }}/Projects/dotfiles"
+      with_items:
+        - git
+        - fish
+        - npm
+        - nvim
+        - rg
+        - tmux
+        - base16-shell
