@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  tasks:
+
+  - name: "fish shell"
+    block:
+    - name: "Find fish shell"
+      shell: "type -p fish"
+      register: fish
+
+    - name: "Enable fish"
+      lineinfile:
+        path: /etc/shells
+        line: "{{ fish.stdout }}"
+        state: present
+      become: yes
+        
+    - name: "Set fish shell"
+      user:
+        name: sbaildon
+        shell: "{{ fish.stdout }}"
+      become: yes
