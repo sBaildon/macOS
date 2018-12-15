@@ -21,7 +21,6 @@
         - fd
         - tmux
         - tree
-        - dep
         - n
         - entr
         - kubernetes-cli
@@ -31,3 +30,35 @@
         - python@2
         - make
         - stow
+        - gpg
+        - opensc
+        - gettext
+        - vault
+        - wireguard-go
+        - pyenv
+        - postgresql
+        - dnsmasq
+        - docker-machine-driver-hyperkit
+        - nginx
+        - pcre2
+        - protobuf
+        - watch
+        - telnet
+        - dos2unix
+
+    - name: "Install cask packages"
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - dotnet-sdk
+        - minikube
+        - smcfancontrol
+        - vagrant
+        - adoptopenjdk
+        - mactex
+
+    - name: "Install neovim python"
+      pip:
+        name: "neovim"
+        executable: "pip3"
