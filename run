@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ansible-playbook playbooks/software.yml
+ansible-playbook --ask-sudo-pass playbooks/fish.yml
+ansible-playbook playbooks/dotfiles.yml
