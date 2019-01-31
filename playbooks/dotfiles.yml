@@ -24,3 +24,14 @@
         - rg
         - tmux
         - base16-shell
+
+    - name: "Install terminfo"
+      command: "tic -x {{ item }}"
+      args:
+        chdir: "{{ ansible_env.HOME }}/Projects/dotfiles"
+      with_items:
+        - terminfo/xterm-256color.terminfo
+        - terminfo/tmux-256color.terminfo
+
+    - name: "Install vim plugins"
+      command: "vim +PlugInstall"
