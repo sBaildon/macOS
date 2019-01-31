@@ -4,59 +4,13 @@
 
     - name: "Install packages"
       homebrew:
-        name: "{{ item }}"
+        name: [ 'neovim', 'vim', 'curl', 'go', 'jq', 'yarn', 'node', 'httpie', 'git', 'fish', 'ripgrep', 'fd', 'tmux', 'tree', 'n', 'entr', 'kubernetes-cli', 'bat', 'fzf', 'python', 'python@2', 'make', 'stow', 'gpg', 'opensc', 'gettext', 'vault', 'wireguard-go', 'pyenv', 'postgresql', 'dnsmasq', 'docker-machine-driver-hyperkit', 'nginx', 'pcre2', 'protobuf', 'watch', 'telnet', 'dos2unix' ]
         state: present
-      with_items:
-        - neovim
-        - vim
-        - curl
-        - go
-        - jq
-        - yarn
-        - node
-        - httpie
-        - git
-        - fish
-        - ripgrep
-        - fd
-        - tmux
-        - tree
-        - n
-        - entr
-        - kubernetes-cli
-        - bat
-        - fzf
-        - python
-        - python@2
-        - make
-        - stow
-        - gpg
-        - opensc
-        - gettext
-        - vault
-        - wireguard-go
-        - pyenv
-        - postgresql
-        - dnsmasq
-        - docker-machine-driver-hyperkit
-        - nginx
-        - pcre2
-        - protobuf
-        - watch
-        - telnet
-        - dos2unix
 
     - name: "Install cask packages"
-      homebrew:
-        name: "{{ item }}"
+      homebrew_cask:
+        name: [ 'dotnet-sdk', 'minikube', 'vagrant', 'adoptopenjdk', 'mactext' ]
         state: present
-      with_items:
-        - dotnet-sdk
-        - minikube
-        - smcfancontrol
-        - vagrant
-        - adoptopenjdk
-        - mactex
 
     - name: "Install neovim python"
       pip:
