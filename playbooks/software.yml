@@ -4,7 +4,7 @@
 
     - name: "Install packages"
       homebrew:
-        name: [ 'neovim', 'vim', 'curl', 'go', 'jq', 'yarn', 'node', 'httpie', 'git', 'fish', 'ripgrep', 'fd', 'tmux', 'tree', 'n', 'entr', 'kubernetes-cli', 'bat', 'fzf', 'python', 'python@2', 'make', 'stow', 'gpg', 'opensc', 'gettext', 'vault', 'wireguard-go', 'pyenv', 'postgresql', 'dnsmasq', 'docker-machine-driver-hyperkit', 'nginx', 'pcre2', 'protobuf', 'watch', 'telnet', 'dos2unix' ]
+        name: [ 'neovim', 'vim', 'curl', 'go', 'jq', 'yarn', 'node', 'httpie', 'git', 'fish', 'ripgrep', 'fd', 'tmux', 'tree', 'n', 'entr', 'kubernetes-cli', 'bat', 'fzf', 'python', 'python@2', 'make', 'stow', 'gpg', 'opensc', 'gettext', 'vault', 'wireguard-go', 'pyenv', 'postgresql', 'dnsmasq', 'docker-machine-driver-hyperkit', 'nginx', 'pcre2', 'protobuf', 'watch', 'telnet', 'dos2unix', 'libtool' ]
         state: present
 
     - name: "Install cask packages"
