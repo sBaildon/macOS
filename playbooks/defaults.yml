@@ -1,0 +1,117 @@
+---
+- hosts: localhost
+  tasks:
+
+    - name: "Safari show favicons"
+      osx_defaults:
+        domain: com.Apple.Safari
+        key: ShowIconsInTabs
+        type: int
+        value: 1
+
+    - name: "Safari show statusbar"
+      osx_defaults:
+        domain: com.Apple.Safari
+        key: ShowOverlayStatusBar
+        type: int
+        value: 1
+
+    - name: "Safari show full URL"
+      osx_defaults:
+        domain: com.Apple.Safari
+        key: ShowFullURLInSmartSearchField
+        type: int
+        value: 1
+
+    - name: "Safari disable password saving"
+      osx_defaults:
+        domain: com.Apple.Safari
+        key: AutoFillPasswords
+        type: int
+        value: 1
+
+        # if this is wrong, use ansible osx_defaults docs because it's there
+    - name: "Safari show developer in menu bar"
+      osx_defaults:
+        domain: com.Apple.Safari
+        key: IncludeDevelopMenu
+        type: bool
+        value: true
+
+    - name: "Save to local disk before iCloud"
+      osx_defaults:
+        domain: NSGlobalDomain
+        key: NSDocumentSaveNewDocumentsToCloud
+        type: bool
+        value: false
+
+    - name: "Check for software updates daily"
+      osx_defaults:
+        domain: com.apple.SoftwareUpdate
+        key: ScheduleFrequency
+        type: int
+        value: 1
+
+    - name: "Disable autocorrect"
+      osx_defaults:
+        domain: NSGlobalDomain
+        key: NSAutomaticSpellingCorrectionEnabled
+        type: bool
+        value: false
+
+    - name: "Prompt for password immediately after screensaver/sleep"
+      osx_defaults:
+        domain: com.apple.screensaver
+        key: askForPassword
+        type: int
+        value: 1
+
+    - name: "Prompt for password immediately after screensaver/sleep"
+      osx_defaults:
+        domain: com.apple.screensaver
+        key: askForPasswordDelay
+        type: int
+        value: 0
+
+    - name: "Show finder statusbar"
+      osx_defaults:
+        domain: com.apple.finder
+        key: ShowStatusBar
+        type: bool
+        value: true
+
+    - name: "Disable extension rename warning"
+      osx_defaults:
+        domain: com.apple.finder
+        key: FXEnableExtensionChangeWarning
+        type: bool
+        value: false
+
+    - name: "Don't create .DS_Store on networked volumes"
+      osx_defaults:
+        domain: com.apple.desktopservices
+        key: DSDontWriteNetworkStores
+        type: bool
+        value: true
+
+    - name: "Allow text selection in preview"
+      osx_defaults:
+        domain: com.apple.finder
+        key: QLEnableTextSelection
+        type: bool
+        value: true
+
+    - name: "Remove all non default apps from dock"
+      osx_defaults:
+        domain: com.apple.dock
+        key: persistent-apps
+        type: array
+        state: absent
+
+    - name: "Resize dock icons"
+      osx_defaults:
+        domain: com.apple.dock
+        key: tilesize
+        type: int
+        value: 36
+
