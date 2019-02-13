@@ -9,7 +9,7 @@
 
     - name: "Install cask packages"
       homebrew_cask:
-        name: [ 'dotnet-sdk', 'minikube', 'vagrant', 'adoptopenjdk', 'mactext' ]
+        name: [ 'dotnet-sdk', 'minikube', 'vagrant', 'adoptopenjdk', 'mactext', 'docker' ]
         state: present
 
     - name: "Install neovim python"
