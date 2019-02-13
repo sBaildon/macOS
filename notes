@@ -1,6 +1,13 @@
 macos
 	keyrepeat?
 	four finger swipe
-	three finger drag
 	expose disable move windows for most used
+	hide extension
 
+
+vscode
+	keyrepeat
+
+hyperkit
+	sudo chown root:wheel /usr/local/opt/docker-machine-driver-hyperkit/bin/docker-machine-driver-hyperkit
+	sudo chmod u+s /usr/local/opt/docker-machine-driver-hyperkit/bin/docker-machine-driver-hyperkit
