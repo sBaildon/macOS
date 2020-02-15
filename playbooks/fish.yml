@@ -14,9 +14,14 @@
         line: "{{ fish.stdout }}"
         state: present
       become: yes
+
+    - name: "Get username"
+      become: false
+      local_action: command whoami
+      register: username
         
     - name: "Set fish shell"
       user:
-        name: sbaildon
+        name: "{{ username.stdout }}"
         shell: "{{ fish.stdout }}"
       become: yes
