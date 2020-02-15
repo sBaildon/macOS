@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+echo "Installing homebrew..."
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+echo "Installing python..."
+brew install python
+
+echo "Installing ansible..."
+pip3 install --user ansible
