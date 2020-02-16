@@ -21,7 +21,7 @@
         - fd
         - tmux
         - tree
-        - n 
+        - n
         - entr
         - kubernetes-cli
         - bat
@@ -57,6 +57,10 @@
         - bettertouchtool
         - fantastical
         - little-snitch
+        - visual-studio-code
+        - steam
+        - discord
+        - notion
 
 
     - name: "Install neovim python"
