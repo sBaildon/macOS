@@ -4,13 +4,60 @@
 
     - name: "Install packages"
       homebrew:
-        name: [ 'neovim', 'vim', 'curl', 'go', 'jq', 'yarn', 'node', 'httpie', 'git', 'fish', 'ripgrep', 'fd', 'tmux', 'tree', 'n', 'entr', 'kubernetes-cli', 'bat', 'fzf', 'python', 'python@2', 'make', 'stow', 'gpg', 'opensc', 'gettext', 'vault', 'wireguard-go', 'pyenv', 'postgresql', 'dnsmasq', 'docker-machine-driver-hyperkit', 'nginx', 'pcre2', 'protobuf', 'watch', 'telnet', 'dos2unix', 'libtool', 'caddy' ]
+        formula: "{{ item }}"
         state: present
+      loop:
+        - neovim
+        - vim
+        - curl
+        - go
+        - jq
+        - yarn
+        - node
+        - httpie
+        - git
+        - fish
+        - ripgrep
+        - fd
+        - tmux
+        - tree
+        - n 
+        - entr
+        - kubernetes-cli
+        - bat
+        - fzf
+        - python
+        - make
+        - stow
+        - gpg
+        - vault
+        - wireguard-go
+        - pyenv
+        - dnsmasq
+        - docker-machine-driver-hyperkit
+        - protobuf
+        - watch
+        - telnet
+        - dos2unix
+        - libtool
+        - brew-cask-completion
+
 
     - name: "Install cask packages"
       homebrew_cask:
-        name: [ 'dotnet-sdk', 'minikube', 'vagrant', 'adoptopenjdk', 'mactext', 'docker' ]
+        name: "{{ item }}"
         state: present
+      loop:
+        - docker
+        - amethyst
+        - google-chrome
+        - firefox
+        - 1password
+        - 1password-cli
+        - bettertouchtool
+        - fantastical
+        - little-snitch
+
 
     - name: "Install neovim python"
       pip:
