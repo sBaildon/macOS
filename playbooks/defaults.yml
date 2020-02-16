@@ -104,9 +104,32 @@
     - name: "Remove all non default apps from dock"
       osx_defaults:
         domain: com.apple.dock
-        key: persistent-apps
-        type: array
-        state: absent
+        key: static-only
+        type: bool
+        state: true
+
+    - name: "Don't show recent apps in dock"
+      osx_defaults:
+        domain: com.apple.dock
+        key: show-recents
+        type: bool
+        state: false
+
+
+    - name: "Show hidden items in dock"
+      osx_defaults:
+        domain: com.apple.dock
+        key: showhidden
+        type: bool
+        state: true
+
+    - name: "Auto hide dock"
+      osx_defaults:
+        domain: com.apple.dock
+        key: autohide
+        type: bool
+        state: true
+
 
     - name: "Resize dock icons"
       osx_defaults:
@@ -114,6 +137,7 @@
         key: tilesize
         type: int
         value: 36
+      notify: killall Dock
 
     - name: "Trackpad three finger drag"
       osx_defaults:
