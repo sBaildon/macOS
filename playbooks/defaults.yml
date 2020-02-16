@@ -167,4 +167,24 @@
         type: int
         value: 2
 
+    - name: "Amethyst window margin"
+      osx_defaults:
+        domain: com.amethyst.Amethyst
+        key: window-margin-size
+        type: int
+        value: 6
+
+    - name: "Amethyst disable layout name"
+      osx_defaults:
+        domain: com.amethyst.Amethyst
+        key: enables-layout-hud-on-space-change
+        type: bool
+        value: false
+
+    - name: "Amethyst mouse swaps windows"
+      osx_defaults:
+        domain: com.amethyst.Amethyst
+        key: mouse-swaps-windows
+        type: bool
+        value: true
 
