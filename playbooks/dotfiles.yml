@@ -7,7 +7,7 @@
 
     - name: "Clone dotfiles"
       git:
-        repo: https://github.com/sbaildon/dotfiles.git
+        repo: git@github.com:sbaildon/dotfiles.git
         dest: "{{ ansible_env.HOME }}/Projects/dotfiles"
         recursive: yes
         accept_hostkey: yes
@@ -34,4 +34,4 @@
         - terminfo/tmux-256color.terminfo
 
     - name: "Install vim plugins"
-      command: "vim +PlugInstall"
+      command: "nvim +PlugInstall +qa"
