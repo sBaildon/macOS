@@ -143,8 +143,8 @@
       osx_defaults:
         domain: com.apple.AppleMultitouchTrackpad
         key: TrackpadThreeFingerDrag
-        type: int
-        value: 1
+        type: bool
+        value: true
 
     - name: "Trackpad 2 finger notifications"
       osx_defaults:
