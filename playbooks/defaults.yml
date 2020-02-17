@@ -1,6 +1,46 @@
 ---
 - hosts: localhost
+  vars:
+    corebrightness_plist: /private/var/root/Library/Preferences/com.apple.CoreBrightness.plist
   tasks:
+
+    - name: "Get userID"
+      shell: "dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2"
+      register: userID
+
+    - name: "Configure nightshift"
+      shell: |
+        /usr/libexec/PlistBuddy -c "Set :CBUser-{{ userID.stdout }}:CBBlueLightReductionCCTTargetRaw 2700" {{ corebrightness_plist }}
+        /usr/libexec/PlistBuddy -c "Set :CBUser-{{ userID.stdout }}:CBBlueReductionStatus:BlueReductionEnabled 1" {{ corebrightness_plist }}
+        /usr/libexec/PlistBuddy -c "Set :CBUser-{{ userID.stdout }}:CBBlueReductionStatus:BlueReductionMode 1" {{ corebrightness_plist }}
+        killall cfprefsd
+        killall corebrightnessd
+      become: yes
+
+    - name: "Show external drives on the desktop"
+      osx_defaults:
+        domain: com.apple.finder
+        key: ShowExternalHardDrivesOnDesktop
+        type: bool
+        value: true
+
+    - name: "Show removable media on the desktop"
+      osx_defaults:
+        domain: com.apple.finder
+        key: ShowRemovableMediaOnDesktop
+        type: bool
+        value: true
+
+    - name: "Don't automatically rearranged Spaces based on most recent use"
+      osx_defaults:
+        domain: com.apple.dock
+        key: mru-spaces
+        type: bool
+        value: false
+
+    - name: "Show ~/Library directory"
+      command: chflags nohidden ~/Library
+      become: true
 
     - name: "Safari show favicons"
       osx_defaults:
@@ -72,13 +112,6 @@
         key: askForPasswordDelay
         type: int
         value: 0
-
-    - name: "Show finder statusbar"
-      osx_defaults:
-        domain: com.apple.finder
-        key: ShowStatusBar
-        type: bool
-        value: true
 
     - name: "Disable extension rename warning"
       osx_defaults:
