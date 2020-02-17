@@ -106,14 +106,14 @@
         domain: com.apple.dock
         key: static-only
         type: bool
-        state: true
+        value: true
 
     - name: "Don't show recent apps in dock"
       osx_defaults:
         domain: com.apple.dock
         key: show-recents
         type: bool
-        state: false
+        value: false
 
 
     - name: "Show hidden items in dock"
@@ -121,23 +121,21 @@
         domain: com.apple.dock
         key: showhidden
         type: bool
-        state: true
+        value: true
 
     - name: "Auto hide dock"
       osx_defaults:
         domain: com.apple.dock
         key: autohide
         type: bool
-        state: true
-
+        value: true
 
     - name: "Resize dock icons"
       osx_defaults:
         domain: com.apple.dock
         key: tilesize
-        type: int
+        type: float
         value: 36
-      notify: killall Dock
 
     - name: "Trackpad three finger drag"
       osx_defaults:
@@ -171,7 +169,7 @@
       osx_defaults:
         domain: com.amethyst.Amethyst
         key: window-margin-size
-        type: int
+        type: float
         value: 6
 
     - name: "Amethyst disable layout name"
