@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#ssh-agent
-#ssh-add ~/.ssh/id_ed25519
+ssh-agent
+ssh-add
 
 PY_PATH=$(python3 -c 'import site; print(site.USER_BASE + "/bin")' | tr -d '\n')
 
 ANSIBLE_PLAYBOOK="${PY_PATH}/ansible-playbook"
 
-$ANSIBLE_PLAYBOOK --ask-become-pass top_level.yml
+$ANSIBLE_PLAYBOOK top_level.yml
