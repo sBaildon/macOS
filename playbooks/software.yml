@@ -41,7 +41,8 @@
         - dos2unix
         - libtool
         - brew-cask-completion
-
+        - fortune
+        - sl
 
     - name: "Install cask packages"
       homebrew_cask:
@@ -61,7 +62,6 @@
         - steam
         - discord
         - notion
-
 
     - name: "Install neovim python"
       pip:
