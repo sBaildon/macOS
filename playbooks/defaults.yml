@@ -44,39 +44,73 @@
 
     - name: "Safari show favicons"
       osx_defaults:
-        domain: com.Apple.Safari
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
         key: ShowIconsInTabs
-        type: int
-        value: 1
+        type: bool
+        value: true
 
     - name: "Safari show statusbar"
       osx_defaults:
-        domain: com.Apple.Safari
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
         key: ShowOverlayStatusBar
-        type: int
-        value: 1
+        type: bool
+        value: true
 
     - name: "Safari show full URL"
       osx_defaults:
-        domain: com.Apple.Safari
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
         key: ShowFullURLInSmartSearchField
-        type: int
-        value: 1
+        type: bool
+        value: true
 
-    - name: "Safari disable password saving"
+    - name: "Safari disable autofill passwords"
       osx_defaults:
-        domain: com.Apple.Safari
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
         key: AutoFillPasswords
-        type: int
-        value: 1
+        type: bool
+        value: false
 
-        # if this is wrong, use ansible osx_defaults docs because it's there
-    - name: "Safari show developer in menu bar"
+    - name: "Safari show develop menu"
       osx_defaults:
-        domain: com.Apple.Safari
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
         key: IncludeDevelopMenu
         type: bool
         value: true
+
+    - name: "Safari restore previous session"
+      osx_defaults:
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        key: AlwaysRestoreSessionAtLaunch
+        type: bool
+        value: true
+
+    - name: "Safari don't restore private windows"
+      osx_defaults:
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        key: ExcludePrivateWindowWhenRestoringSessionAtLaunch
+        type: bool
+        value: true
+
+    - name: "Safari don't auto open safe downloads"
+      osx_defaults:
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        key: AutoOpenSafeDownloads
+        type: bool
+        value: false
+
+    - name: "Safari don't automatically purge history"
+      osx_defaults:
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        key: HistoryAgeInDaysLimit
+        type: int
+        value: 365000
+
+    - name: "Safari disable push notiifcation prompts"
+      osx_defaults:
+        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        key: CanPromptForPushNotifications
+        type: bool
+        value: false
 
     - name: "Save to local disk before iCloud"
       osx_defaults:
