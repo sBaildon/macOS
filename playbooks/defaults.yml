@@ -1,14 +1,16 @@
 ---
 - hosts: localhost
+
   vars:
     corebrightness_plist: /private/var/root/Library/Preferences/com.apple.CoreBrightness.plist
-  tasks:
+    safari_domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
 
+  tasks:
     - name: "Get userID"
       shell: "dscl . -read /Users/$(whoami)/ GeneratedUID | cut -d' ' -f2"
       register: userID
 
-    - name: "Configure nightshift"
+    - name: "Configure nightshift: warmest, scheduled sunset -> sunrise"
       shell: |
         /usr/libexec/PlistBuddy -c "Set :CBUser-{{ userID.stdout }}:CBBlueLightReductionCCTTargetRaw 2700" {{ corebrightness_plist }}
         /usr/libexec/PlistBuddy -c "Set :CBUser-{{ userID.stdout }}:CBBlueReductionStatus:BlueReductionEnabled 1" {{ corebrightness_plist }}
@@ -31,6 +33,23 @@
         type: bool
         value: true
 
+    - name: "Disable extension rename warning"
+      osx_defaults:
+        domain: com.apple.finder
+        key: FXEnableExtensionChangeWarning
+        type: bool
+        value: false
+
+    - name: "Allow text selection in preview"
+      osx_defaults:
+        domain: com.apple.finder
+        key: QLEnableTextSelection
+        type: bool
+        value: true
+
+    - name: "Restart finder"
+      command: killall Finder
+
     - name: "Don't automatically rearranged Spaces based on most recent use"
       osx_defaults:
         domain: com.apple.dock
@@ -40,74 +59,73 @@
 
     - name: "Show ~/Library directory"
       command: chflags nohidden ~/Library
-      become: true
 
     - name: "Safari show favicons"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: ShowIconsInTabs
         type: bool
         value: true
 
     - name: "Safari show statusbar"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: ShowOverlayStatusBar
         type: bool
         value: true
 
     - name: "Safari show full URL"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: ShowFullURLInSmartSearchField
         type: bool
         value: true
 
     - name: "Safari disable autofill passwords"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: AutoFillPasswords
         type: bool
         value: false
 
     - name: "Safari show develop menu"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: IncludeDevelopMenu
         type: bool
         value: true
 
     - name: "Safari restore previous session"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: AlwaysRestoreSessionAtLaunch
         type: bool
         value: true
 
     - name: "Safari don't restore private windows"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: ExcludePrivateWindowWhenRestoringSessionAtLaunch
         type: bool
         value: true
 
     - name: "Safari don't auto open safe downloads"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: AutoOpenSafeDownloads
         type: bool
         value: false
 
     - name: "Safari don't automatically purge history"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: HistoryAgeInDaysLimit
         type: int
         value: 365000
 
     - name: "Safari disable push notiifcation prompts"
       osx_defaults:
-        domain: ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
+        domain: "{{ safari_domain }}"
         key: CanPromptForPushNotifications
         type: bool
         value: false
@@ -147,24 +165,10 @@
         type: int
         value: 0
 
-    - name: "Disable extension rename warning"
-      osx_defaults:
-        domain: com.apple.finder
-        key: FXEnableExtensionChangeWarning
-        type: bool
-        value: false
-
     - name: "Don't create .DS_Store on networked volumes"
       osx_defaults:
         domain: com.apple.desktopservices
         key: DSDontWriteNetworkStores
-        type: bool
-        value: true
-
-    - name: "Allow text selection in preview"
-      osx_defaults:
-        domain: com.apple.finder
-        key: QLEnableTextSelection
         type: bool
         value: true
 
@@ -181,7 +185,6 @@
         key: show-recents
         type: bool
         value: false
-
 
     - name: "Show hidden items in dock"
       osx_defaults:
@@ -203,6 +206,9 @@
         key: tilesize
         type: float
         value: 36
+
+    - name: "Restart dock"
+      command: killall Dock
 
     - name: "Trackpad three finger drag"
       osx_defaults:
