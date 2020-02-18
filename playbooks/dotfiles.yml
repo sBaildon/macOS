@@ -26,6 +26,7 @@
         - base16-shell
         - vscode
         - iterm2
+        - little-snitch
 
     - name: "Install terminfo"
       command: "tic -x {{ item }}"
