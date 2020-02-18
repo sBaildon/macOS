@@ -144,6 +144,13 @@
         type: bool
         value: false
 
+    - name: "Enable key repeat macOS"
+      osx_defaults:
+        domain: NSGlobalDomain
+        key: ApplePressAndHoldEnabled
+        type: bool
+        value: false
+
     - name: "Check for software updates daily"
       osx_defaults:
         domain: com.apple.SoftwareUpdate
