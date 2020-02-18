@@ -24,6 +24,8 @@
         - rg
         - tmux
         - base16-shell
+        - vscode
+        - iterm2
 
     - name: "Install terminfo"
       command: "tic -x {{ item }}"
