@@ -62,6 +62,7 @@
         - steam
         - discord
         - notion
+        - karabiner-elements
 
     - name: "Install neovim python"
       pip:
