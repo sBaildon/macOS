@@ -26,6 +26,7 @@
         - nvim
         - rg
         - tmux
+        - gnupg
         - base16-shell
         - vscode
         - iterm2
