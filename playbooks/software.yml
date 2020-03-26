@@ -49,6 +49,7 @@
         name: "{{ item }}"
         state: present
       loop:
+        - iterm2
         - docker
         - amethyst
         - google-chrome
