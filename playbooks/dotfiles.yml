@@ -1,21 +1,24 @@
 ---
 - hosts: localhost
-  tasks:
 
+  vars:
+    dotfiles_loc: "{{ ansible_env.HOME }}/Projects/dotfiles"
+
+  tasks:
   - name: "dotfiles"
     block:
 
     - name: "Clone dotfiles"
       git:
         repo: git@github.com:sbaildon/dotfiles.git
-        dest: "{{ ansible_env.HOME }}/Projects/dotfiles"
+        dest: "{{ dotfiles_loc }}"
         recursive: yes
         accept_hostkey: yes
 
     - name: "Stow dotfiles"
       command: "stow -t {{ ansible_env.HOME}}/ {{ item }}"
       args:
-        chdir: "{{ ansible_env.HOME }}/Projects/dotfiles"
+        chdir: "{{ dotfiles_loc }}"
       with_items:
         - git
         - fish
@@ -31,7 +34,7 @@
     - name: "Install terminfo"
       command: "tic -x {{ item }}"
       args:
-        chdir: "{{ ansible_env.HOME }}/Projects/dotfiles"
+        chdir: "{{ dotfiles_loc }}"
       with_items:
         - terminfo/xterm-256color.terminfo
         - terminfo/tmux-256color.terminfo
