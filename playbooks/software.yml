@@ -51,6 +51,7 @@
       loop:
         - iterm2
         - docker
+        - battle-net
         - amethyst
         - google-chrome
         - firefox
