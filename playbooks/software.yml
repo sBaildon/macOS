@@ -7,6 +7,7 @@
         formula: "{{ item }}"
         state: present
       loop:
+        - gpg
         - neovim
         - vim
         - curl
@@ -29,7 +30,6 @@
         - python
         - make
         - stow
-        - gpg
         - vault
         - wireguard-go
         - pyenv
