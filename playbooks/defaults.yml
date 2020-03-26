@@ -252,12 +252,19 @@
         type: int
         value: 2
 
-    - name: "Amethyst window margin"
+    - name: "Amethyst window margin size"
       osx_defaults:
         domain: com.amethyst.Amethyst
         key: window-margin-size
         type: float
         value: 5
+
+    - name: "Amethyst enable window margin"
+      osx_defaults:
+        domain: com.amethyst.Amethyst
+        key: window-margins
+        type: bool
+        value: true
 
     - name: "Amethyst disable layout name"
       osx_defaults:
