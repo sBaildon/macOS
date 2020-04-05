@@ -43,6 +43,7 @@
         - brew-cask-completion
         - fortune
         - sl
+        - luarocks
 
     - name: "Install cask packages"
       homebrew_cask:
