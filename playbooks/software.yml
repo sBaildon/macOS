@@ -44,6 +44,7 @@
         - fortune
         - sl
         - luarocks
+        - yq
 
     - name: "Install cask packages"
       homebrew_cask:
