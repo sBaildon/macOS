@@ -45,6 +45,7 @@
         - sl
         - luarocks
         - yq
+        - bash
 
     - name: "Install cask packages"
       homebrew_cask:
