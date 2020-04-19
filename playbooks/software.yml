@@ -46,6 +46,8 @@
         - luarocks
         - yq
         - bash
+        - mosh
+        - pipenv
 
     - name: "Install cask packages"
       homebrew_cask:
