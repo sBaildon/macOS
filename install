@@ -6,5 +6,8 @@ echo "Installing homebrew..."
 echo "Installing python..."
 brew install python
 
+echo "Installing gpg..."
+brew install gpg
+
 echo "Installing ansible..."
 pip3 install --user ansible
