@@ -55,6 +55,7 @@
         state: present
       loop:
         - iterm2
+        - pinentry-mac
         - docker
         - battle-net
         - amethyst
