@@ -48,6 +48,7 @@
         - bash
         - mosh
         - pipenv
+        - caddy
 
     - name: "Install cask packages"
       homebrew_cask:
