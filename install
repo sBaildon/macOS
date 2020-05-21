@@ -4,10 +4,11 @@ echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing python..."
-brew install python
+brew install pyenv
+cat .python-version | pyenv install
 
 echo "Installing gpg..."
 brew install gpg
 
 echo "Installing ansible..."
-pip3 install --user ansible
+$(pyenv root)/shims/pip3 install --user ansible

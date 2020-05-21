@@ -3,7 +3,7 @@
 gpg-agent --daemon
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-PY_PATH=$(python3 -c 'import site; print(site.USER_BASE + "/bin")' | tr -d '\n')
+PY_PATH=$($(pyenv root)/shims/python -c 'import site; print(site.USER_BASE + "/bin")' | tr -d '\n')
 
 ANSIBLE_PLAYBOOK="${PY_PATH}/ansible-playbook"
 
