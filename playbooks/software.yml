@@ -31,9 +31,7 @@
         - make
         - stow
         - vault
-        - wireguard-go
         - pyenv
-        - dnsmasq
         - docker-machine-driver-hyperkit
         - protobuf
         - watch
