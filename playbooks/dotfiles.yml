@@ -2,7 +2,7 @@
 - hosts: localhost
 
   vars:
-    dotfiles_loc: "{{ ansible_env.HOME }}/Projects/dotfiles"
+    dotfiles_loc: "{{ ansible_env.HOME }}/Projects/personal/dotfiles"
 
   tasks:
   - name: "dotfiles"
