@@ -245,13 +245,6 @@
         type: int
         value: 0
 
-    - name: "iTerm2 Margin"
-      osx_defaults:
-        domain: com.googlecode.iterm2
-        key: TerminalMargin
-        type: int
-        value: 2
-
     - name: "Amethyst window margin size"
       osx_defaults:
         domain: com.amethyst.Amethyst
